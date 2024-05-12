@@ -1,6 +1,6 @@
 import { allPosts } from "@/.contentlayer/generated";
 
-export const baseUrl = "http://localhost:3000";
+export const baseUrl = "https://xiaobaotong-eight.vercel.app";
 
 export default async function sitemap() {
   let blogs = allPosts.map((post) => ({

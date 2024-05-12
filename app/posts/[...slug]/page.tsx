@@ -1,52 +1,63 @@
-import { notFound } from "next/navigation"
-import { allPosts } from "contentlayer/generated"
+import { notFound } from "next/navigation";
+import { allPosts } from "contentlayer/generated";
 
-import { Metadata } from "next"
-import { Mdx } from "@/components/mdx-components"
+import { Metadata } from "next";
+import { Mdx } from "@/components/mdx-components";
+import { baseUrl } from "app/sitemap";
 
 interface PostProps {
   params: {
-    slug: string[]
-  }
+    slug: string[];
+  };
 }
 
 async function getPostFromParams(params: PostProps["params"]) {
-  const slug = params?.slug?.join("/")
-  const post = allPosts.find((post) => post.slugAsParams === slug)
+  const slug = params?.slug?.join("/");
+  const post = allPosts.find((post) => post.slugAsParams === slug);
 
   if (!post) {
-    null
+    null;
   }
 
-  return post
+  return post;
 }
 
 export async function generateMetadata({
   params,
 }: PostProps): Promise<Metadata> {
-  const post = await getPostFromParams(params)
+  const post = await getPostFromParams(params);
 
   if (!post) {
-    return {}
+    return {};
   }
 
   return {
     title: post.title,
     description: post.description,
-  }
+    alternates: {
+      canonical: `${baseUrl}${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      publishedTime: post.date,
+      url: `${baseUrl}${post.slug}`,
+    },
+  };
 }
 
 export async function generateStaticParams(): Promise<PostProps["params"][]> {
   return allPosts.map((post) => ({
     slug: post.slugAsParams.split("/"),
-  }))
+  }));
 }
 
 export default async function PostPage({ params }: PostProps) {
-  const post = await getPostFromParams(params)
+  const post = await getPostFromParams(params);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -60,5 +71,5 @@ export default async function PostPage({ params }: PostProps) {
       <hr className="my-4" />
       <Mdx code={post.body.code} />
     </article>
-  )
+  );
 }

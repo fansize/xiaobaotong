@@ -12,18 +12,18 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Next.js Portfolio Starter",
-    template: "%s | Next.js",
+    default: "AI 使用手册",
+    template: "%s | User's Manual",
   },
-  description: "This is my portfolio.",
+  description: "这是针对小白的一份AI使用手册.",
   alternates: {
     canonical: `${baseUrl}`,
   },
   openGraph: {
-    title: "My Portfolio",
-    description: "This is my portfolio.",
+    title: "AI 使用手册",
+    description: "这是针对小白的一份AI使用手册.",
     url: baseUrl,
-    siteName: "My Portfolio",
+    siteName: "AI 使用手册",
     locale: "en_US",
     type: "website",
   },

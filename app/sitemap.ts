@@ -1,6 +1,9 @@
 import { allPosts } from "@/.contentlayer/generated";
 
-export const baseUrl = "https://xiaotot.vercel.app";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://gpt4oo.vercel.app"
+    : "http://localhost:3000";
 
 export default async function sitemap() {
   let blogs = allPosts.map((post) => ({

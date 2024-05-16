@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: "AI 使用手册",
-    template: "%s | User's Manual",
+    template: "%s | GPT-4o",
   },
   description: "这是针对小白的一份AI使用手册.",
   alternates: {

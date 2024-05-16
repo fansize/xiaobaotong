@@ -6,8 +6,7 @@ export default function Navbar() {
     <div className="flex items-center justify-between">
       <nav className="text-base font-medium space-x-6">
         <Link href="/">Home</Link>
-        <Link href="/dic">Dic</Link>
-        <Link href="/about">About</Link>
+        <Link href="/gpt4o">GPT-4o</Link>
       </nav>
       <ModeToggle />
     </div>

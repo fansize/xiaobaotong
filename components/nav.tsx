@@ -6,7 +6,7 @@ export default function Navbar() {
     <div className="flex items-center justify-between">
       <nav className="text-base font-medium space-x-6">
         <Link href="/">Home</Link>
-        <Link href="/gpt4o">GPT-4o</Link>
+        <Link href="/gpt4o">Download ChatGPT Desktop</Link>
       </nav>
       <ModeToggle />
     </div>
